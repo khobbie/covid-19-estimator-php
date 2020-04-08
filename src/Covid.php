@@ -64,8 +64,19 @@ class Covid
         return  $severe_impact_currentlyInfected * 512;
     }
 
-    public function get_name()
+    public function return_data($data_, $impact_currentlyInfected, $impact_infectionsByRequestedTime, $severe_impact_currentlyInfected, $severe_infectionsByRequestedTime)
     {
-        return $this->name;
+        // return data
+        return  [
+            'data' => $data_,
+            'impact' => [
+                'currentlyInfected' => $impact_currentlyInfected,
+                'infectionsByRequestedTime' => $impact_infectionsByRequestedTime
+            ],
+            'severeImpact' => [
+                'currentlyInfected' => $severe_impact_currentlyInfected,
+                'infectionsByRequestedTime' => $severe_infectionsByRequestedTime
+            ]
+        ];
     }
 }

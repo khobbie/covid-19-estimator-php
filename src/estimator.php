@@ -20,19 +20,22 @@ $severe_impact_currentlyInfected = $covid->severe_impact_currentlyInfected($data
 $impact_infectionsByRequestedTime = $covid->impact_infectionsByRequestedTime($impact_currentlyInfected);
 $severe_infectionsByRequestedTime = $covid->severe_infectionsByRequestedTime($severe_impact_currentlyInfected);
 
+// return data
+$data = $covid->return_data($data_, $impact_currentlyInfected, $impact_infectionsByRequestedTime, $severe_impact_currentlyInfected, $severe_infectionsByRequestedTime);
+
 
 // return data
-$data = [
-  'data' => $data_,
-  'impact' => [
-    'currentlyInfected' => $impact_currentlyInfected,
-    'infectionsByRequestedTime' => $impact_infectionsByRequestedTime
-  ],
-  'severeImpact' => [
-    'currentlyInfected' => $severe_impact_currentlyInfected,
-    'infectionsByRequestedTime' => $severe_infectionsByRequestedTime
-  ]
-];
+// $data = [
+//   'data' => $data_,
+//   'impact' => [
+//     'currentlyInfected' => $impact_currentlyInfected,
+//     'infectionsByRequestedTime' => $impact_infectionsByRequestedTime
+//   ],
+//   'severeImpact' => [
+//     'currentlyInfected' => $severe_impact_currentlyInfected,
+//     'infectionsByRequestedTime' => $severe_infectionsByRequestedTime
+//   ]
+// ];
 
 
 
