@@ -25,8 +25,12 @@ $severe_infectionsByRequestedTime = $covid->severe_infectionsByRequestedTime($se
 $impact_severeCasesByRequestedTime = $covid->impact_severeCasesByRequestedTime($impact_infectionsByRequestedTime);
 $severe_severeCasesByRequestedTime = $covid->severe_severeCasesByRequestedTime($severe_infectionsByRequestedTime);
 
+// GET severeCasesByRequestedTime  BTY REQUESTED TIME
+$impact_hospitalBedsByRequestedTime = $covid->impact_hospitalBedsByRequestedTime($data_['totalHospitalBeds'], $impact_severeCasesByRequestedTime);
+$severe_hospitalBedsByRequestedTime = $covid->severe_hospitalBedsByRequestedTime($data_['totalHospitalBeds'], $severe_severeCasesByRequestedTime);
+
 // return data
-$data = $covid->return_data($data_, $impact_currentlyInfected, $impact_infectionsByRequestedTime, $severe_impact_currentlyInfected, $severe_infectionsByRequestedTime, $impact_severeCasesByRequestedTime, $severe_severeCasesByRequestedTime);
+$data = $covid->return_data($data_, $impact_currentlyInfected, $impact_infectionsByRequestedTime, $severe_impact_currentlyInfected, $severe_infectionsByRequestedTime, $impact_severeCasesByRequestedTime, $severe_severeCasesByRequestedTime, $impact_hospitalBedsByRequestedTime, $severe_hospitalBedsByRequestedTime);
 
 
 // return data
@@ -35,14 +39,14 @@ $data = [
   'impact' => [
     'currentlyInfected' => $impact_currentlyInfected,
     'infectionsByRequestedTime' => $impact_infectionsByRequestedTime,
-    'severeCasesByRequestedTime' => $impact_severeCasesByRequestedTime
-    // 'hospitalBedsByRequestedTime' =>
+    'severeCasesByRequestedTime' => $impact_severeCasesByRequestedTime,
+    'hospitalBedsByRequestedTime' => $impact_hospitalBedsByRequestedTime
   ],
   'severeImpact' => [
     'currentlyInfected' => $severe_impact_currentlyInfected,
     'infectionsByRequestedTime' => $severe_infectionsByRequestedTime,
-    'severeCasesByRequestedTime' => $severe_severeCasesByRequestedTime
-    // 'hospitalBedsByRequestedTime' =>
+    'severeCasesByRequestedTime' => $severe_severeCasesByRequestedTime,
+    'hospitalBedsByRequestedTime' => $severe_hospitalBedsByRequestedTime
   ]
 ];
 
