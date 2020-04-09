@@ -86,7 +86,18 @@ class Covid
         return intval($severe_avavailable_bed - $severeCasesByRequestedTime);
     }
 
-    public function return_data($data_, $impact_currentlyInfected, $impact_infectionsByRequestedTime, $severe_impact_currentlyInfected, $severe_infectionsByRequestedTime, $impact_severeCasesByRequestedTime, $severe_severeCasesByRequestedTime, $impact_hospitalBedsByRequestedTime, $severe_hospitalBedsByRequestedTime)
+
+    public function impact_casesForICUByRequestedTime($impact_infectionsByRequestedTime)
+    {
+        return (5 * $impact_infectionsByRequestedTime) / 100;
+    }
+
+    public function severe_casesForICUByRequestedTime($severe_infectionsByRequestedTime)
+    {
+        return (5 * $severe_infectionsByRequestedTime) / 100;
+    }
+
+    public function return_data($data_, $impact_currentlyInfected, $impact_infectionsByRequestedTime, $severe_impact_currentlyInfected, $severe_infectionsByRequestedTime, $impact_severeCasesByRequestedTime, $severe_severeCasesByRequestedTime, $impact_hospitalBedsByRequestedTime, $severe_hospitalBedsByRequestedTime, $impact_casesForICUByRequestedTime, $severe_casesForICUByRequestedTime)
     {
         // return data
         return  [
@@ -95,13 +106,15 @@ class Covid
                 'currentlyInfected' => $impact_currentlyInfected,
                 'infectionsByRequestedTime' => $impact_infectionsByRequestedTime,
                 'severeCasesByRequestedTime' => $impact_severeCasesByRequestedTime,
-                'hospitalBedsByRequestedTime' => $impact_hospitalBedsByRequestedTime
+                'hospitalBedsByRequestedTime' => $impact_hospitalBedsByRequestedTime,
+                'casesForICUByRequestedTime' => $impact_casesForICUByRequestedTime
             ],
             'severeImpact' => [
                 'currentlyInfected' => $severe_impact_currentlyInfected,
                 'infectionsByRequestedTime' => $severe_infectionsByRequestedTime,
                 'severeCasesByRequestedTime' => $severe_severeCasesByRequestedTime,
-                'hospitalBedsByRequestedTime' => $severe_hospitalBedsByRequestedTime
+                'hospitalBedsByRequestedTime' => $severe_hospitalBedsByRequestedTime,
+                'casesForICUByRequestedTime' => $severe_casesForICUByRequestedTime
             ]
         ];
     }
