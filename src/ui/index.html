@@ -46,87 +46,192 @@
         </div>
       </nav>
     </div>
-    <br /><br />
+    <br />
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
-          <h4>Enter Details</h4>
-          <hr></hr>
-          <form>
-            <div class="form-group">
-              <label for="population">Population</label>
-              <input
-                type="number"
-                min="0"
-                class="form-control"
-                id="population"
-                data-population
-              />
-            </div>
-            <div class="form-group">
-              <label for="timeToElapse">Time to Elapse </label>
-              <input
-                type="number"
-                min="0"
-                class="form-control timeToElapse"
-                id="timeToElapse"
-                data-time-to-elapse
-              />
-            </div>
-            <div class="form-group">
-              <label for="reportedCases">Reported Cases </label>
-              <input
-                type="number"
-                min="0"
-                class="form-control reportedCases"
-                id="reportedCases"
-                data-reported-cases
-              />
-            </div>
-            <div class="form-group">
-              <label for="totalHospitalBeds">Total Hospital Beds </label>
-              <input
-                type="number"
-                min="0"
-                class="form-control totalHospitalBeds"
-                id="totalHospitalBeds"
-                data-total-hospital-beds
-              />
-            </div>
-            <div class="form-group">
-              <label for="periodType">Period Type </label>
-              <select
-                class="form-control"
-                id="exampleFormControlSelect1"
-                data-period-type
-              >
-                <option>Days</option>
-                <option>Weeks</option>
-                <option>Months</option>
-              </select>
+      
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                    <b>Enter Data</b> 
+                    </div>
+                    <div class="card-body">
+                    <!-- <h5 class="card-title">Special title treatment</h5> -->
+                    <p class="card-text">
+                                <form>
+                    <div class="form-group">
+                    <label for="population">Population</label>
+                    <input
+                        type="number"
+                        min="0"
+                        class="form-control"
+                        id="population"
+                        data-population
+                    />
+                    </div>
+                    <div class="form-group">
+                    <label for="timeToElapse">Time to Elapse </label>
+                    <input
+                        type="number"
+                        min="0"
+                        class="form-control timeToElapse"
+                        id="timeToElapse"
+                        data-time-to-elapse
+                    />
+                    </div>
+                    <div class="form-group">
+                    <label for="reportedCases">Reported Cases </label>
+                    <input
+                        type="number"
+                        min="0"
+                        class="form-control reportedCases"
+                        id="reportedCases"
+                        data-reported-cases
+                    />
+                    </div>
+                    <div class="form-group">
+                    <label for="totalHospitalBeds">Total Hospital Beds </label>
+                    <input
+                        type="number"
+                        min="0"
+                        class="form-control totalHospitalBeds"
+                        id="totalHospitalBeds"
+                        data-total-hospital-beds
+                    />
+                    </div>
+                    <div class="form-group">
+                    <label for="periodType">Period Type </label>
+                    <select
+                        class="form-control"
+                        id="exampleFormControlSelect1"
+                        data-period-type
+                    >
+                        <option>Days</option>
+                        <option>Weeks</option>
+                        <option>Months</option>
+                    </select>
+                    </div>
+
+                    <div class="form-group">
+                    <button type="submit" class="btn btn-secondary" data-goestimate >Submit</button>
+                    </div>
+                </form>
+                    </p>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-              <button type="submit" class="btn btn-secondary" data-goestimate >Submit</button>
+        <div class="col-md-8">
+
+
+            <div class="row">
+                <div class="container">
+                     <div class="card">
+                        <div class="card-header">
+                         <b>Impact</b> 
+                        </div>
+                        <div class="card-body">
+                        <!-- <h5 class="card-title">Special title treatment</h5> -->
+                        <p class="card-text">
+                          <span>
+                              <span>Current Infected: &nbsp;</span>
+                              <b class="num_val"></b>
+                            </span> <br>
+                            
+                          <span>
+                              <span>Infections by requested time: &nbsp;</span>
+                              <b class="num_val"></b>
+                            </span> <br>
+
+                          <span>
+                              <span>Severe cases by requested Time: &nbsp;</span>
+                              <b class="num_val"></b>
+                            </span> <br>
+
+                          <span>
+                              <span>Hospital beds by requested time: &nbsp;</span>
+                              <b class="num_val"></b>
+                            </span> <br>
+
+                          <span>
+                              <span>Cases for ICU by requested time: &nbsp;</span>
+                              <b class="num_val"></b>
+                            </span> <br>
+
+                          <span>
+                              <span>Cases for ventilators by requested time: &nbsp;</span>
+                              <b class="num_val"></b>
+                            </span> <br>
+
+                          <span>
+                              <span>Dollars in flight: &nbsp;</span>
+                              <b class="num_val"></b>
+                            </span>
+
+                        </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </form>
+
+
+            <hr>
+
+
+            <div class="row">
+                <div class="container">
+                     <div class="card">
+                        <div class="card-header">
+                         <b> Severe Impact </b>
+                        </div>
+                        <div class="card-body">
+                        <!-- <h5 class="card-title">Special title treatment</h5> -->
+                        <p class="card-text">
+                          <span>
+                              <span>Current Infected: &nbsp;</span>
+                              <b class="num_val"></b>
+                            </span> <br>
+                            
+                          <span>
+                              <span>Infections by requested time: &nbsp;</span>
+                              <b class="num_val"></b>
+                            </span> <br>
+
+                          <span>
+                              <span>Severe cases by requested Time: &nbsp;</span>
+                              <b class="num_val"></b>
+                            </span> <br>
+
+                          <span>
+                              <span>Hospital beds by requested time: &nbsp;</span>
+                              <b class="num_val"></b>
+                            </span> <br>
+
+                          <span>
+                              <span>Cases for ICU by requested time: &nbsp;</span>
+                              <b class="num_val"></b>
+                            </span> <br>
+
+                          <span>
+                              <span>Cases for ventilators by requested time: &nbsp;</span>
+                              <b class="num_val"></b>
+                            </span> <br>
+
+                          <span>
+                              <span>Dollars in flight: &nbsp;</span>
+                              <b class="num_val"></b>
+                            </span>
+
+                        </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
         </div>
-
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-header">
-              Impact
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">
-                With supporting text below as a natural lead-in to additional
-                content.
-              </p>
-            </div>
-          </div>
-        </div>
-
+        
+<!-- 
         <div class="col-md-4">
           <div class="card">
             <div class="card-header">
@@ -140,7 +245,8 @@
               </p>
             </div>
           </div>
-        </div>
+        </div> -->
+
       </div>
     </div>
 
@@ -161,5 +267,10 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script>
+        var num = numeral(1000).format('0,0');
+        $('.num_val').text(num);
+    </script>
   </body>
 </html>
