@@ -64,18 +64,30 @@ class Covid
         return  $severe_impact_currentlyInfected * 512;
     }
 
-    public function return_data($data_, $impact_currentlyInfected, $impact_infectionsByRequestedTime, $severe_impact_currentlyInfected, $severe_infectionsByRequestedTime)
+    public function impact_severeCasesByRequestedTime($impact_infectionsByRequestedTime)
+    {
+        return (15 * $impact_infectionsByRequestedTime) / 100;
+    }
+
+    public function severe_severeCasesByRequestedTime($severe_infectionsByRequestedTime)
+    {
+        return (15 * $severe_infectionsByRequestedTime) / 100;
+    }
+
+    public function return_data($data_, $impact_currentlyInfected, $impact_infectionsByRequestedTime, $severe_impact_currentlyInfected, $severe_infectionsByRequestedTime, $impact_severeCasesByRequestedTime, $severe_severeCasesByRequestedTime)
     {
         // return data
         return  [
             'data' => $data_,
             'impact' => [
                 'currentlyInfected' => $impact_currentlyInfected,
-                'infectionsByRequestedTime' => $impact_infectionsByRequestedTime
+                'infectionsByRequestedTime' => $impact_infectionsByRequestedTime,
+                'severeCasesByRequestedTime' => $impact_severeCasesByRequestedTime
             ],
             'severeImpact' => [
                 'currentlyInfected' => $severe_impact_currentlyInfected,
-                'infectionsByRequestedTime' => $severe_infectionsByRequestedTime
+                'infectionsByRequestedTime' => $severe_infectionsByRequestedTime,
+                'severeCasesByRequestedTime' => $severe_severeCasesByRequestedTime
             ]
         ];
     }
