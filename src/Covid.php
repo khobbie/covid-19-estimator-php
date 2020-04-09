@@ -42,37 +42,41 @@ class Covid
         ];
     }
 
+
     public function impact_currentlyInfected($reportedCases)
     {
         $this->impact_currentlyInfected = $reportedCases * 10;
-        return $this->impact_currentlyInfected;
+        return intval($this->impact_currentlyInfected);
     }
 
     public function severe_impact_currentlyInfected($reportedCases)
     {
         $this->severe_impact_currentlyInfected = $reportedCases * 50;
-        return $this->severe_impact_currentlyInfected;
+        return intval($this->severe_impact_currentlyInfected);
     }
+
 
     public function impact_infectionsByRequestedTime($impact_currentlyInfected)
     {
-        return  $impact_currentlyInfected * 512;
+        return  intval($impact_currentlyInfected * 512);
     }
 
     public function severe_infectionsByRequestedTime($severe_impact_currentlyInfected)
     {
-        return  $severe_impact_currentlyInfected * 512;
+        return  intval($severe_impact_currentlyInfected * 512);
     }
+
 
     public function impact_severeCasesByRequestedTime($impact_infectionsByRequestedTime)
     {
-        return (15 * $impact_infectionsByRequestedTime) / 100;
+        return intval((15 * $impact_infectionsByRequestedTime) / 100);
     }
 
     public function severe_severeCasesByRequestedTime($severe_infectionsByRequestedTime)
     {
-        return (15 * $severe_infectionsByRequestedTime) / 100;
+        return intval((15 * $severe_infectionsByRequestedTime) / 100);
     }
+
 
     public function impact_hospitalBedsByRequestedTime($totalHospitalBeds, $severeCasesByRequestedTime)
     {
@@ -89,15 +93,37 @@ class Covid
 
     public function impact_casesForICUByRequestedTime($impact_infectionsByRequestedTime)
     {
-        return (5 * $impact_infectionsByRequestedTime) / 100;
+        return intval((5 * $impact_infectionsByRequestedTime) / 100);
     }
 
     public function severe_casesForICUByRequestedTime($severe_infectionsByRequestedTime)
     {
-        return (5 * $severe_infectionsByRequestedTime) / 100;
+        return intval((5 * $severe_infectionsByRequestedTime) / 100);
     }
 
-    public function return_data($data_, $impact_currentlyInfected, $impact_infectionsByRequestedTime, $severe_impact_currentlyInfected, $severe_infectionsByRequestedTime, $impact_severeCasesByRequestedTime, $severe_severeCasesByRequestedTime, $impact_hospitalBedsByRequestedTime, $severe_hospitalBedsByRequestedTime, $impact_casesForICUByRequestedTime, $severe_casesForICUByRequestedTime)
+
+    public function impact_casesForVentilatorsByRequestedTime($impact_infectionsByRequestedTime)
+    {
+        return intval((2 * $impact_infectionsByRequestedTime) / 100);
+    }
+
+    public function severe_casesForVentilatorsByRequestedTime($severe_infectionsByRequestedTime)
+    {
+        return intval((2 * $severe_infectionsByRequestedTime) / 100);
+    }
+
+
+    public function impact_dollarsInFlight($impact_infectionsByRequestedTime, $avgDailyIncomePopulation, $avgDailyIncomeInUSD, $timeToElapse)
+    {
+        return intval($impact_infectionsByRequestedTime * $avgDailyIncomePopulation * $avgDailyIncomeInUSD * $timeToElapse);
+    }
+
+    public function severe_dollarsInFlight($severe_infectionsByRequestedTime, $avgDailyIncomePopulation, $avgDailyIncomeInUSD, $timeToElapse)
+    {
+        return intval($severe_infectionsByRequestedTime * $avgDailyIncomePopulation * $avgDailyIncomeInUSD * $timeToElapse);
+    }
+
+    public function return_data($data_, $impact_currentlyInfected, $impact_infectionsByRequestedTime, $severe_impact_currentlyInfected, $severe_infectionsByRequestedTime, $impact_severeCasesByRequestedTime, $severe_severeCasesByRequestedTime, $impact_hospitalBedsByRequestedTime, $severe_hospitalBedsByRequestedTime, $impact_casesForICUByRequestedTime, $severe_casesForICUByRequestedTime, $impact_casesForVentilatorsByRequestedTime, $severe_casesForVentilatorsByRequestedTime, $impact_dollarsInFlight, $severe_dollarsInFlight)
     {
         // return data
         return  [
@@ -107,14 +133,18 @@ class Covid
                 'infectionsByRequestedTime' => $impact_infectionsByRequestedTime,
                 'severeCasesByRequestedTime' => $impact_severeCasesByRequestedTime,
                 'hospitalBedsByRequestedTime' => $impact_hospitalBedsByRequestedTime,
-                'casesForICUByRequestedTime' => $impact_casesForICUByRequestedTime
+                'casesForICUByRequestedTime' => $impact_casesForICUByRequestedTime,
+                'casesForVentilatorsByRequestedTime' => $impact_casesForVentilatorsByRequestedTime,
+                'dollarsInFlight' => $impact_dollarsInFlight
             ],
             'severeImpact' => [
                 'currentlyInfected' => $severe_impact_currentlyInfected,
                 'infectionsByRequestedTime' => $severe_infectionsByRequestedTime,
                 'severeCasesByRequestedTime' => $severe_severeCasesByRequestedTime,
                 'hospitalBedsByRequestedTime' => $severe_hospitalBedsByRequestedTime,
-                'casesForICUByRequestedTime' => $severe_casesForICUByRequestedTime
+                'casesForICUByRequestedTime' => $severe_casesForICUByRequestedTime,
+                'casesForVentilatorsByRequestedTime' => $severe_casesForVentilatorsByRequestedTime,
+                'dollarsInFlight' => $severe_dollarsInFlight
             ]
         ];
     }
