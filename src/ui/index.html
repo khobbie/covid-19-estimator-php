@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <title>COVID-19</title>
+    <style>
+      body {
+        background-color: #eef3f5 /*#f5f5fa*/;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="">
+      <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li>
+              <a class="navbar-brand container" href="#"> NOVELTY COVID-19 </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <br /><br />
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h4>Enter Details</h4>
+          <hr></hr>
+          <form>
+            <div class="form-group">
+              <label for="population">Population</label>
+              <input
+                type="number"
+                min="0"
+                class="form-control"
+                id="population"
+                data-population
+              />
+            </div>
+            <div class="form-group">
+              <label for="timeToElapse">Time to Elapse </label>
+              <input
+                type="number"
+                min="0"
+                class="form-control timeToElapse"
+                id="timeToElapse"
+                data-time-to-elapse
+              />
+            </div>
+            <div class="form-group">
+              <label for="reportedCases">Reported Cases </label>
+              <input
+                type="number"
+                min="0"
+                class="form-control reportedCases"
+                id="reportedCases"
+                data-reported-cases
+              />
+            </div>
+            <div class="form-group">
+              <label for="totalHospitalBeds">Total Hospital Beds </label>
+              <input
+                type="number"
+                min="0"
+                class="form-control totalHospitalBeds"
+                id="totalHospitalBeds"
+                data-total-hospital-beds
+              />
+            </div>
+            <div class="form-group">
+              <label for="periodType">Period Type </label>
+              <select
+                class="form-control"
+                id="exampleFormControlSelect1"
+                data-period-type
+              >
+                <option>Days</option>
+                <option>Weeks</option>
+                <option>Months</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-secondary" data-goestimate >Submit</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">
+              Impact
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">
+                With supporting text below as a natural lead-in to additional
+                content.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">
+              Severe Impact
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">
+                With supporting text below as a natural lead-in to additional
+                content.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
