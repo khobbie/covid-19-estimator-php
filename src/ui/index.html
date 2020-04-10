@@ -15,6 +15,7 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://unpkg.com/placeholder-loading/dist/css/placeholder-loading.min.css">
 
     <title>COVID-19</title>
     <style>
@@ -23,7 +24,7 @@
       }
     </style>
   </head>
-  <body>
+  <body ng-app="Covid" ng-controller="IndexCtrl" >
     <div class="">
       <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
         <button
@@ -40,7 +41,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li>
-              <a class="navbar-brand container" href="#"> NOVELTY COVID-19 </a>
+              <a class="navbar-brand container" href="#"> NOVELTY COVID-19 {{ name | number  }}</a>
             </li>
           </ul>
         </div>
@@ -59,63 +60,58 @@
                     <div class="card-body">
                     <!-- <h5 class="card-title">Special title treatment</h5> -->
                     <p class="card-text">
-                                <form>
-                    <div class="form-group">
-                    <label for="population">Population</label>
-                    <input
-                        type="number"
-                        min="0"
-                        class="form-control"
-                        id="population"
-                        data-population
-                    />
-                    </div>
-                    <div class="form-group">
-                    <label for="timeToElapse">Time to Elapse </label>
-                    <input
-                        type="number"
-                        min="0"
-                        class="form-control timeToElapse"
-                        id="timeToElapse"
-                        data-time-to-elapse
-                    />
-                    </div>
-                    <div class="form-group">
-                    <label for="reportedCases">Reported Cases </label>
-                    <input
-                        type="number"
-                        min="0"
-                        class="form-control reportedCases"
-                        id="reportedCases"
-                        data-reported-cases
-                    />
-                    </div>
-                    <div class="form-group">
-                    <label for="totalHospitalBeds">Total Hospital Beds </label>
-                    <input
-                        type="number"
-                        min="0"
-                        class="form-control totalHospitalBeds"
-                        id="totalHospitalBeds"
-                        data-total-hospital-beds
-                    />
-                    </div>
-                    <div class="form-group">
-                    <label for="periodType">Period Type </label>
-                    <select
-                        class="form-control"
-                        id="exampleFormControlSelect1"
-                        data-period-type
-                    >
-                        <option>Days</option>
-                        <option>Weeks</option>
-                        <option>Months</option>
-                    </select>
-                    </div>
+                   <form id="covid_submit">
+                      <div class="form-group">
+                      <label for="population">Population</label>
+                      <input
+                          type="number"
+                          min="1"
+                          class="form-control"
+                          id="population"
+                      />
+                      </div>
+                      <div class="form-group">
+                      <label for="timeToElapse">Time to Elapse </label>
+                      <input
+                          type="number"
+                          min="1"
+                          class="form-control timeToElapse"
+                          id="timeToElapse"
+                      />
+                      </div>
+                      <div class="form-group">
+                      <label for="reportedCases">Reported Cases </label>
+                      <input
+                          type="number"
+                          min="1"
+                          class="form-control reportedCases"
+                          id="reportedCases"
+                      />
+                      </div>
+                      <div class="form-group">
+                      <label for="totalHospitalBeds">Total Hospital Beds </label>
+                      <input
+                          type="number"
+                          min="1"
+                          class="form-control totalHospitalBeds"
+                          id="totalHospitalBeds"
+                      />
+                      </div>
+                      <div class="form-group">
+                      <label for="periodType">Period Type </label>
+                      <select
+                          class="form-control"
+                          id="periodType"
+                      >
+                          <option value="days" selected>Days</option>
+                          <option value="weeks">Weeks</option>
+                          <option value="months">Months</option>
+                      </select>
+                      </div>
 
-                    <div class="form-group">
-                    <button type="submit" class="btn btn-secondary" data-goestimate >Submit</button>
-                    </div>
+                      <div class="form-group">
+                      <button type="submit"  class="btn btn-secondary" >Submit</button>
+                      </div>
                 </form>
                     </p>
                     </div>
@@ -125,7 +121,7 @@
         <div class="col-md-8">
 
 
-            <div class="row">
+            <div class="row" ng-cloak>
                 <div class="container">
                      <div class="card">
                         <div class="card-header">
@@ -133,43 +129,56 @@
                         </div>
                         <div class="card-body">
                         <!-- <h5 class="card-title">Special title treatment</h5> -->
-                        <p class="card-text">
+                        <p class="card-text" ng-if="impact">
                           <span>
                               <span>Current Infected: &nbsp;</span>
-                              <b class="num_val"></b>
+                              <b class="num_val">{{ impact.currentlyInfected | number  }}</b>
                             </span> <br>
                             
                           <span>
                               <span>Infections by requested time: &nbsp;</span>
-                              <b class="num_val"></b>
+                              <b class="num_val">{{ impact.infectionsByRequestedTime | number  }}</b>
                             </span> <br>
 
                           <span>
                               <span>Severe cases by requested Time: &nbsp;</span>
-                              <b class="num_val"></b>
+                             <b class="num_val">{{ impact.severeCasesByRequestedTime | number  }}</b>
                             </span> <br>
 
                           <span>
                               <span>Hospital beds by requested time: &nbsp;</span>
-                              <b class="num_val"></b>
+                             <b class="num_val">{{ impact.hospitalBedsByRequestedTime | number  }}</b>
                             </span> <br>
 
                           <span>
                               <span>Cases for ICU by requested time: &nbsp;</span>
-                              <b class="num_val"></b>
+                             <b class="num_val">{{ impact.casesForICUByRequestedTime | number  }}</b>
                             </span> <br>
 
                           <span>
                               <span>Cases for ventilators by requested time: &nbsp;</span>
-                              <b class="num_val"></b>
+                             <b class="num_val">{{ impact.casesForVentilatorsByRequestedTime | number  }}</b>
                             </span> <br>
 
                           <span>
                               <span>Dollars in flight: &nbsp;</span>
-                              <b class="num_val"></b>
+                             <b class="num_val">{{ impact.dollarsInFlight | number  }}</b>
                             </span>
 
-                        </p>
+                        </p >
+
+                        <!-- <p class="card-text" ng-if="!impact">
+                           
+                            <div class="ph-row">
+                              <div class="ph-col-12"></div>
+                              <div class="ph-col-2"></div>
+                              <div class="ph-col-10 empty"></div>
+                              <div class="ph-col-8 big"></div>
+                              <div class="ph-col-4 big empty"></div>
+                            
+                          </div>
+
+                        </p> -->
                         </div>
                     </div>
                 </div>
@@ -179,7 +188,7 @@
             <hr>
 
 
-            <div class="row">
+            <div class="row" ng-cloak>
                 <div class="container">
                      <div class="card">
                         <div class="card-header">
@@ -187,43 +196,55 @@
                         </div>
                         <div class="card-body">
                         <!-- <h5 class="card-title">Special title treatment</h5> -->
-                        <p class="card-text">
+                        <p class="card-text" ng-if="severe_impact">
                           <span>
                               <span>Current Infected: &nbsp;</span>
-                              <b class="num_val"></b>
+                             <b class="num_val">{{ severe_impact.currentlyInfected | number  }}</b>
                             </span> <br>
                             
                           <span>
                               <span>Infections by requested time: &nbsp;</span>
-                              <b class="num_val"></b>
+                             <b class="num_val">{{ severe_impact.infectionsByRequestedTime | number  }}</b>
                             </span> <br>
 
                           <span>
                               <span>Severe cases by requested Time: &nbsp;</span>
-                              <b class="num_val"></b>
+                             <b class="num_val">{{ severe_impact.severeCasesByRequestedTime | number  }}</b>
                             </span> <br>
 
                           <span>
                               <span>Hospital beds by requested time: &nbsp;</span>
-                              <b class="num_val"></b>
+                             <b class="num_val">{{ severe_impact.hospitalBedsByRequestedTime | number  }}</b>
                             </span> <br>
 
                           <span>
                               <span>Cases for ICU by requested time: &nbsp;</span>
-                              <b class="num_val"></b>
+                             <b class="num_val">{{ severe_impact.casesForICUByRequestedTime | number  }}</b>
                             </span> <br>
 
                           <span>
                               <span>Cases for ventilators by requested time: &nbsp;</span>
-                              <b class="num_val"></b>
+                             <b class="num_val">{{ severe_impact.casesForVentilatorsByRequestedTime | number  }}</b>
                             </span> <br>
 
                           <span>
                               <span>Dollars in flight: &nbsp;</span>
-                              <b class="num_val"></b>
+                             <b class="num_val">{{ severe_impact.dollarsInFlight | number  }}</b>
                             </span>
 
                         </p>
+
+                         <!-- <p class="card-text" ng-if="!severe_impact">
+                           
+                            <div class="ph-row">
+                              <div class="ph-col-12"></div>
+                              <div class="ph-col-2"></div>
+                              <div class="ph-col-10 empty"></div>
+                              <div class="ph-col-8 big"></div>
+                              <div class="ph-col-4 big empty"></div>
+                           
+                          </div>
+                         </p> -->
                         </div>
                     </div>
                 </div>
@@ -250,13 +271,11 @@
       </div>
     </div>
 
+
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
       integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
@@ -267,10 +286,9 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-    <script>
-        var num = numeral(1000).format('0,0');
-        $('.num_val').text(num);
-    </script>
+    <script src="./libs/bootstrap-notify.min.js"></script>
+    <script src="./libs/angular.min.js"></script>
+    <script src="./IndexCtrl.js"></script>
+  
   </body>
 </html>

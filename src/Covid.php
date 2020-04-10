@@ -43,6 +43,20 @@ class Covid
     }
 
 
+    public function convert_timeToElapse_to_days($periodType, $timeToElapse)
+    {
+
+        if ($periodType == 'weeks') {
+            $timeToElapse = $timeToElapse * 7;
+        } elseif ($periodType == 'months') {
+            $timeToElapse = $timeToElapse * 30;
+        } else {
+            $timeToElapse = 1;
+        }
+
+        return $timeToElapse;
+    }
+
     public function impact_currentlyInfected($reportedCases)
     {
         $this->impact_currentlyInfected = $reportedCases * 10;
