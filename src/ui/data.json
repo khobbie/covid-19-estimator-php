@@ -1,13 +1,32 @@
-{
-    "region": {
+[{
         "name": "African",
-        "avgAge": 19.7,
-        "avgDailyIncomeInUSD": 5,
+        "avgAge": 59,
+        "avgDailyIncomeInUSD": 10,
         "avgDailyIncomePopulation": 0.71
     },
-    "periodType": "days",
-    "timeToElapse": 58,
-    "reportedCases": 674,
-    "population": 66622705,
-    "totalHospitalBeds": 1380614
-}
+    {
+        "name": "Asia",
+        "avgAge": 55,
+        "avgDailyIncomeInUSD": 30,
+        "avgDailyIncomePopulation": 0.56
+    },
+    {
+        "name": "America",
+        "avgAge": 45,
+        "avgDailyIncomeInUSD": 45,
+        "avgDailyIncomePopulation": 0.2
+    },
+    {
+        "name": "Europ",
+        "avgAge": 19.7,
+        "avgDailyIncomeInUSD": 50,
+        "avgDailyIncomePopulation": 0.8
+    },
+    {
+        "name": "East",
+        "avgAge": 60,
+        "avgDailyIncomeInUSD": 5,
+        "avgDailyIncomePopulation": 0.25
+    }
+
+]
