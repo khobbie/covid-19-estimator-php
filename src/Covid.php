@@ -23,7 +23,7 @@ class Covid
 
     public function processData($url)
     {
-        $this->json_data = file_get_contents("data.json");
+        // $this->json_data = file_get_contents($url);
         $this->input_data = json_decode($this->json_data);
         return $this->input_data;
     }
