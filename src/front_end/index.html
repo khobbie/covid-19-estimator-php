@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/placeholder-loading/dist/css/placeholder-loading.min.css"
+    />
+
+    <title>COVID-19</title>
+    <style>
+      body {
+        background-color: #eef3f5 /*#f5f5fa*/;
+      }
+    </style>
+  </head>
+  <body ng-app="Covid" ng-controller="IndexCtrl">
+    <div class="">
+      <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li>
+              <a class="navbar-brand container" href="#">
+                NOVELTY COVID-19 {{ name | number }}</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <b>Enter Data</b>
+            </div>
+            <div class="card-body">
+              <!-- <h5 class="card-title">Special title treatment</h5> -->
+
+              <form id="covid_submit">
+                <!-- <div class="form-group">
+                  <select
+                    class="form-control"
+                    name="region"
+                    id="region"
+                    required
+                  >
+                    <option value="">-- Select Region --</option>
+                    <option ng-repeat="reg in regions" ng-value="reg"
+                      >{{ reg.name }}</option
+                    >
+                  </select>
+                </div> -->
+                <div class="row">
+                  <div class="col">
+                    <label for="population">Region Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      class="form-control"
+                      id="name"
+                      required
+                    />
+                  </div>
+
+                  <div class="col">
+                    <label for="population">Average Age</label>
+                    <input
+                      type="number"
+                      min="1"
+                      name="avgAge"
+                      class="form-control"
+                      id="avgAge"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <legend></legend>
+
+                <div class="row">
+                  <div class="col">
+                    <label for="population">Avg Daily Income USD</label>
+                    <input
+                      type="number"
+                      min="1"
+                      name="avgDailyIncomeInUSD"
+                      class="form-control"
+                      id="avgDailyIncomeInUSD"
+                      required
+                    />
+                  </div>
+
+                  <div class="col">
+                    <label for="population">Avg Daily Income Population</label>
+                    <input
+                      type="number"
+                      min="1"
+                      name="avgDailyIncomePopulation"
+                      class="form-control"
+                      id="avgDailyIncomePopulation"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <hr />
+                <div class="row">
+                  <div class="col">
+                    <label for="population">Population</label>
+                    <input
+                      type="number"
+                      min="1"
+                      class="form-control"
+                      id="population"
+                      required
+                    />
+                  </div>
+
+                  <div class="col">
+                    <label for="timeToElapse">Time to Elapse </label>
+                    <input
+                      type="number"
+                      min="1"
+                      class="form-control timeToElapse"
+                      id="timeToElapse"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <legend></legend>
+
+                <div class="row">
+                  <div class="col">
+                    <label for="reportedCases">Reported Cases </label>
+                    <input
+                      type="number"
+                      min="1"
+                      class="form-control reportedCases"
+                      id="reportedCases"
+                      required
+                    />
+                  </div>
+
+                  <div class="col">
+                    <label for="totalHospitalBeds">Total Hospital Beds </label>
+                    <input
+                      type="number"
+                      min="1"
+                      class="form-control totalHospitalBeds"
+                      id="totalHospitalBeds"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <legend></legend>
+
+                <div class="row">
+                  <div class="col">
+                    <label for="periodType">Period Type </label>
+                    <select class="form-control" id="periodType" required>
+                      <option value="days" selected>Days</option>
+                      <option value="weeks">Weeks</option>
+                      <option value="months">Months</option>
+                    </select>
+                  </div>
+
+                  <div class="col"></div>
+                </div>
+                <legend></legend>
+
+                <div class="form-group">
+                  <button type="submit" class="btn btn-secondary">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="row" ng-cloak>
+            <div class="container">
+              <div class="card">
+                <div class="card-header">
+                  <b>Impact</b>
+                </div>
+                <div class="card-body">
+                  <!-- <h5 class="card-title">Special title treatment</h5> -->
+                  <p class="card-text" ng-if="impact">
+                    <span>
+                      <span>Current Infected: &nbsp;</span>
+                      <b class="num_val"
+                        >{{ impact.currentlyInfected | number }}</b
+                      >
+                    </span>
+                    <br />
+
+                    <span>
+                      <span>Infections by requested time: &nbsp;</span>
+                      <b class="num_val"
+                        >{{ impact.infectionsByRequestedTime | number }}</b
+                      >
+                    </span>
+                    <br />
+
+                    <span>
+                      <span>Severe cases by requested Time: &nbsp;</span>
+                      <b class="num_val"
+                        >{{ impact.severeCasesByRequestedTime | number }}</b
+                      >
+                    </span>
+                    <br />
+
+                    <span>
+                      <span>Hospital beds by requested time: &nbsp;</span>
+                      <b class="num_val"
+                        >{{ impact.hospitalBedsByRequestedTime | number }}</b
+                      >
+                    </span>
+                    <br />
+
+                    <span>
+                      <span>Cases for ICU by requested time: &nbsp;</span>
+                      <b class="num_val"
+                        >{{ impact.casesForICUByRequestedTime | number }}</b
+                      >
+                    </span>
+                    <br />
+
+                    <span>
+                      <span
+                        >Cases for ventilators by requested time: &nbsp;</span
+                      >
+                      <b class="num_val"
+                        >{{ impact.casesForVentilatorsByRequestedTime | number
+                        }}</b
+                      >
+                    </span>
+                    <br />
+
+                    <span>
+                      <span>Dollars in flight: &nbsp;</span>
+                      <b class="num_val"
+                        >{{ impact.dollarsInFlight | number }}</b
+                      >
+                    </span>
+                  </p>
+
+                  <!-- <p class="card-text" ng-if="!impact">
+                           
+                            <div class="ph-row">
+                              <div class="ph-col-12"></div>
+                              <div class="ph-col-2"></div>
+                              <div class="ph-col-10 empty"></div>
+                              <div class="ph-col-8 big"></div>
+                              <div class="ph-col-4 big empty"></div>
+                            
+                          </div>
+
+                        </p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="row" ng-cloak>
+            <div class="container">
+              <div class="card">
+                <div class="card-header">
+                  <b> Severe Impact </b>
+                </div>
+                <div class="card-body">
+                  <!-- <h5 class="card-title">Special title treatment</h5> -->
+                  <p class="card-text" ng-if="severe_impact">
+                    <span>
+                      <span>Current Infected: &nbsp;</span>
+                      <b class="num_val"
+                        >{{ severe_impact.currentlyInfected | number }}</b
+                      >
+                    </span>
+                    <br />
+
+                    <span>
+                      <span>Infections by requested time: &nbsp;</span>
+                      <b class="num_val"
+                        >{{ severe_impact.infectionsByRequestedTime | number
+                        }}</b
+                      >
+                    </span>
+                    <br />
+
+                    <span>
+                      <span>Severe cases by requested Time: &nbsp;</span>
+                      <b class="num_val"
+                        >{{ severe_impact.severeCasesByRequestedTime | number
+                        }}</b
+                      >
+                    </span>
+                    <br />
+
+                    <span>
+                      <span>Hospital beds by requested time: &nbsp;</span>
+                      <b class="num_val"
+                        >{{ severe_impact.hospitalBedsByRequestedTime | number
+                        }}</b
+                      >
+                    </span>
+                    <br />
+
+                    <span>
+                      <span>Cases for ICU by requested time: &nbsp;</span>
+                      <b class="num_val"
+                        >{{ severe_impact.casesForICUByRequestedTime | number
+                        }}</b
+                      >
+                    </span>
+                    <br />
+
+                    <span>
+                      <span
+                        >Cases for ventilators by requested time: &nbsp;</span
+                      >
+                      <b class="num_val"
+                        >{{ severe_impact.casesForVentilatorsByRequestedTime |
+                        number }}</b
+                      >
+                    </span>
+                    <br />
+
+                    <span>
+                      <span>Dollars in flight: &nbsp;</span>
+                      <b class="num_val"
+                        >{{ severe_impact.dollarsInFlight | number }}</b
+                      >
+                    </span>
+                  </p>
+
+                  <!-- <p class="card-text" ng-if="!severe_impact">
+                           
+                            <div class="ph-row">
+                              <div class="ph-col-12"></div>
+                              <div class="ph-col-2"></div>
+                              <div class="ph-col-10 empty"></div>
+                              <div class="ph-col-8 big"></div>
+                              <div class="ph-col-4 big empty"></div>
+                           
+                          </div>
+                         </p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">
+              Severe Impact
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">
+                With supporting text below as a natural lead-in to additional
+                content.
+              </p>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./libs/bootstrap-notify.min.js"></script>
+    <script src="./libs/angular.min.js"></script>
+    <script src="./IndexCtrl.js"></script>
+  </body>
+</html>
