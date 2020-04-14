@@ -23,7 +23,7 @@ class Covid
 
     public function processData($url)
     {
-        // $this->json_data = file_get_contents($url);
+        $this->json_data = file_get_contents($url);
         $this->input_data = json_decode($this->json_data);
         return $this->input_data;
     }
@@ -141,7 +141,7 @@ class Covid
     {
         // return data
         return  [
-            'data' => $data_,
+            'input_data' => $data_,
             'impact' => [
                 'currentlyInfected' => $impact_currentlyInfected,
                 'infectionsByRequestedTime' => $impact_infectionsByRequestedTime,
